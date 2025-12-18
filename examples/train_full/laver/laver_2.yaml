@@ -1,0 +1,64 @@
+### model
+model_name_or_path: path/to/your/model
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+freeze_vision_tower: true
+freeze_multi_modal_projector: false
+freeze_language_model: false
+deepspeed: examples/deepspeed/ds_z3_config.json
+
+### dataset
+dataset: finevision_800k
+template: laver
+cutoff_len: 2048
+overwrite_cache: true
+preprocessing_num_workers: 32
+dataloader_num_workers: 32
+# shuffle buffer
+buffer_size: 1
+# packing
+neat_packing: false
+# packing buffer
+preprocessing_batch_size: 32
+dataloader_prefetch_factor: 128
+streaming: true
+accelerator_config:
+  dispatch_batches: false
+
+### output
+output_dir: path/to/your/output
+logging_steps: 1
+save_steps: 10000
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+# global_bsz = per_device_train_batch_size * gradient_accumulation_steps * dp_num
+per_device_train_batch_size: 2
+gradient_accumulation_steps: 4
+learning_rate: 2.0e-5
+lr_scheduler_type: cosine 
+max_steps: 6250
+
+warmup_steps: 100
+bf16: true
+ddp_timeout: 180000000
+
+image_full_attn: true
+use_laver: true
+mask_ratio: 0.05
+mask_strategy: cosine
+momentum: 0.95
+momentum_strategy: cosine
+lambda_laver: 1.0
+lambda_gram: 1.0
+ema_ratio: 0.02
+
+### eval
+val_size: 500
+per_device_eval_batch_size: 2
+eval_strategy: steps
+eval_steps: 500000

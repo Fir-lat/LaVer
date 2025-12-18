@@ -1,0 +1,56 @@
+### model
+model_name_or_path: path/to/your/model
+
+### method
+stage: sft
+do_train: true
+finetuning_type: full
+freeze_vision_tower: true
+freeze_multi_modal_projector: false
+freeze_language_model: true
+deepspeed: examples/deepspeed/ds_z2_config.json
+
+### dataset
+dataset: llava_pt
+template: llava
+cutoff_len: 2048
+overwrite_cache: true
+preprocessing_num_workers: 32
+dataloader_num_workers: 32
+# shuffle buffer
+buffer_size: 1
+# packing
+neat_packing: false
+# packing buffer
+preprocessing_batch_size: 32
+dataloader_prefetch_factor: 128
+streaming: true
+accelerator_config:
+  dispatch_batches: false
+
+### output
+output_dir: path/to/your/output
+logging_steps: 1
+save_steps: 10000
+plot_loss: true
+overwrite_output_dir: true
+
+### train
+# global_bsz = per_device_train_batch_size * gradient_accumulation_steps * dp_num
+per_device_train_batch_size: 4
+gradient_accumulation_steps: 2
+learning_rate: 2.0e-3
+max_steps: 4360
+lr_scheduler_type: cosine
+warmup_steps: 500
+bf16: true
+ddp_timeout: 180000000
+
+image_full_attn: true
+use_laver: false
+
+### eval
+val_size: 500
+per_device_eval_batch_size: 2
+eval_strategy: steps
+eval_steps: 500000
