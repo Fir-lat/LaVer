@@ -121,10 +121,10 @@ def _process_request(
                     if re.match(r"^data:image\/(png|jpg|jpeg|gif|bmp);base64,(.+)$", image_url):  # base64 image
                         image_stream = io.BytesIO(base64.b64decode(image_url.split(",", maxsplit=1)[1]))
                     elif os.path.isfile(image_url):  # local file
-                        # check_lfi_path(image_url)
+                        check_lfi_path(image_url)
                         image_stream = open(image_url, "rb")
                     else:  # web uri
-                        # check_ssrf_url(image_url)
+                        check_ssrf_url(image_url)
                         image_stream = requests.get(image_url, stream=True).raw
 
                     images.append(Image.open(image_stream).convert("RGB"))

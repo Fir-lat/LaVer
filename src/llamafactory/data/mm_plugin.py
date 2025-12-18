@@ -154,27 +154,6 @@ def _make_batched_images(images: list["ImageObject"], imglens: list[int]) -> lis
 
     return batch_images
 
-# @functools.lru_cache(maxsize=128)  # Adjust cache size based on number of files
-# def get_file_handle(filename):
-#     return open(filename, 'rb')
-
-def read_img_from_path(line):
-    if 'image_encoing' in line.keys():
-        line['image_encoding'] = line['image_encoing']
-    if 'OBELISC' in line['patch'] or 'mp/url_base64' in line['patch'] or 'WIT/WIT-image' in line['patch']:
-        line['image_encoding'] = 'base64'
-    image_file_name = line['patch']
-    start_bytes = int(line['start_num'])
-    file_size = int(line['size'])
-
-    with open(image_file_name, 'rb') as f:
-        f.seek(start_bytes)
-        if 'image_encoding' in line.keys() and line['image_encoding'] == 'base64':
-            image = Image.open(BytesIO(base64.b64decode(f.read(file_size).decode())))
-        else:
-            image = Image.open(BytesIO(f.read(file_size)))
-    return image
-
 def _check_video_is_nested_images(video: "VideoInput") -> bool:
     r"""Check if the video is nested images."""
     return isinstance(video, list) and all(isinstance(frame, (str, BinaryIO, dict, ImageObject)) for frame in video)
@@ -306,9 +285,7 @@ class MMPluginMixin:
             elif isinstance(image, bytes):
                 image = Image.open(BytesIO(image))
             elif isinstance(image, dict):
-                if "patch" in image:
-                    image = read_img_from_path(image)
-                elif image["bytes"] is not None:
+                if image["bytes"] is not None:
                     image = Image.open(BytesIO(image["bytes"]))
                 else:
                     image = Image.open(image["path"])
