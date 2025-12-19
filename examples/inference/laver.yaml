@@ -1,4 +1,4 @@
-model_name_or_path: /apdcephfs_qy4/share_302593112/firhzli/code/laver/models/baseline_finevision_23m_debug_siglip_converted #/apdcephfs_qy4/share_302593112/firhzli/code/laver/ckpt/laver_qwen2_5_siglip2
+model_name_or_path: path/to/your/model
 template: llava
 infer_backend: huggingface  # choices: [huggingface, vllm, sglang, ktransformers]
 trust_remote_code: true
