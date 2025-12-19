@@ -47,8 +47,8 @@ Multimodal Large Language Models (MLLMs) have demonstrated remarkable proficienc
 ```
 pip3 install -e [torch,metrics]
 pip3 install transformers==4.56.2 qwen-vl-utils
-pip3 install -i deepspeed==0.15.4
-pip3 install -i datasets==3.5.0
+pip3 install deepspeed==0.15.4
+pip3 install datasets==3.5.0
 ```
 
 ### Datasets
