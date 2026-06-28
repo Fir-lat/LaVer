@@ -1,20 +1,9 @@
 <h1 align="center">Unleashing the Intrinsic Visual Representation Capability of Multimodal Large Language Models</h1>
 <p align="center">
-  <a href=" https://www.arxiv.org/abs/2512.06281"><img src="https://img.shields.io/badge/arXiv-2501.16718-AE4F55.svg?logo=arxiv" alt="Paper"></a>
+  <a href="https://arxiv.org/abs/2512.06281v1"><img src="https://img.shields.io/badge/arXiv-2512.06281-AE4F55.svg?logo=arxiv" alt="Paper"></a>
   <a href="https://github.com/Fir-lat/LaVer"><img src="https://img.shields.io/badge/Github-LaVer-8D4859.svg?logo=github" alt="Code"></a>
-  <!-- <a href="https://openreview.net/forum?id=N6ba2xsmds"><img src="https://img.shields.io/badge/OpenReview-LaVer-6D415E.svg" alt="Paper"></a> -->
-  <!-- <a href="https://iclr.cc/virtual/2025/poster/29899"><img src="https://img.shields.io/badge/Accepted-ICLR'25-4E3B64.svg" alt="License"></a> -->
-  <!-- <a href="https://iclr.cc/media/iclr-2025/Slides/29899.pdf"><img src="https://img.shields.io/badge/Slides-LaVer-33356A.svg" alt="Slides"></a> -->
-  <!-- <a href=" https://www.arxiv.org/abs/2512.06281"><img src="https://img.shields.io/badge/arXiv-2501.16718-b31b1b.svg?logo=arxiv
-  " alt="Paper"></a>
-  <a href="https://github.com/Fir-lat/LaVer"><img src="https://img.shields.io/badge/Github-LaVer-333.svg?logo=github&color=333
-  " alt="Code"></a>
-  <a href="https://openreview.net/forum?id=N6ba2xsmds"><img src="https://img.shields.io/badge/OpenReview-LaVer-80261B.svg
-  " alt="Paper"></a>
-  <a href="https://openreview.net/forum?id=N6ba2xsmds"><img src="https://img.shields.io/badge/Accepted-ICLR'25-78C49D.svg
-  " alt="License"></a>
-  <a href="https://iclr.cc/media/iclr-2025/Slides/29899.pdf"><img src="https://img.shields.io/badge/Slides-LaVer-002FA7.svg
-  " alt="Slides"></a> -->
+  <a href="https://openaccess.thecvf.com/content/CVPR2026/papers/Li_Unleashing_the_Intrinsic_Visual_Representation_Capability_of_Multimodal_Large_Language_CVPR_2026_paper.pdf"><img src="https://img.shields.io/badge/CVF-LaVer-6D415E.svg" alt="Paper"></a>
+  <a href="https://cvpr.thecvf.com/virtual/2026/poster/39041"><img src="https://img.shields.io/badge/Accepted-CVPR'26-4E3B64.svg" alt="License"></a>
 </p>
 
 This codebase provides a Pytorch implementation for ```LaVer``` in [Unleashing the Intrinsic Visual Representation Capability of Multimodal Large Language Models](https://www.arxiv.org/abs/2512.06281).
@@ -47,8 +36,8 @@ Multimodal Large Language Models (MLLMs) have demonstrated remarkable proficienc
 ```
 pip3 install -e [torch,metrics]
 pip3 install transformers==4.56.2 qwen-vl-utils
-pip3 install deepspeed==0.15.4
-pip3 install datasets==3.5.0
+pip3 install -i deepspeed==0.15.4
+pip3 install -i datasets==3.5.0
 ```
 
 ### Datasets
@@ -94,11 +83,13 @@ We use [VLMEvalKit](https://github.com/open-compass/VLMEvalKit) to evaluate our 
 If you find **LaVer** useful or relevant to your research, please kindly cite our paper:
 
 ```bibtex
-@inproceedings{li2025laver,
+@inproceedings{li2026laver,
   title={Unleashing the Intrinsic Visual Representation Capability of Multimodal Large Language Models},
   author={Li, Hengzhuang and Zhang, Xinsong and Peng, Qiming and Luo, Bin and Hu, Han and Jiang, Dengyang and Ye, Han-Jia and Zhang, Teng and Jin, Hai},
-  booktitle={ArXiv},
-  year={2025}
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
+  address={Denver, CO},
+  pages={1771--1786},
+  year={2026}
 }
 ```
 
