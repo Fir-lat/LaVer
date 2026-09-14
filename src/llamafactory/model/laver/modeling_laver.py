@@ -357,7 +357,11 @@ class LaverLoss(nn.Module):
         matrix_student = torch.matmul(student_logits_norm, student_logits_norm.transpose(0, 1))
         matrix_teacher = torch.matmul(teacher_logits_norm, teacher_logits_norm.transpose(0, 1))
 
-        loss_gram = F.mse_loss(matrix_student, matrix_teacher)
+        # GA
+        # loss_gram = F.mse_loss(matrix_student, matrix_teacher)
+
+        # CGA
+        loss_gram = F.relu(matrix_student - matrix_teacher).square().mean()
 
         loss = self.lambda1 * loss_mim + self.lambda2 * loss_gram
 
